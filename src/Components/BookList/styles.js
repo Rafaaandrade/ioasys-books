@@ -9,6 +9,8 @@ export const useStyles = makeStyles((theme) => ({
         backgroundImage: `url(${background})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        width: '100%',
+        margin: '0 auto'
     },
     header: {
         fontFamily: 'Heebo',
@@ -19,9 +21,11 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         width: '100%',
         minHeight: '100px',
+        margin:' 0 auto',
 
-        "&p:span": {
+        "& span": {
             fontWeight: 'bold',
+            marginLeft: '2rem'
         }
     },
     logout: {
@@ -30,11 +34,12 @@ export const useStyles = makeStyles((theme) => ({
         gap: '12px',
     },
     gridContainer: {
-        gap: '16px'
+        gap: '1rem  ',
+        margin: '0 auto',
+        width: '100%'
     },
     img: {
-        width: '30%',
-        height: '100%',
+        width: '25%', 
         objectFit: 'contain',
         marginLeft: '1rem',
         marginRight: '1rem',
@@ -42,12 +47,19 @@ export const useStyles = makeStyles((theme) => ({
     card: {
         display: 'inline-flex',
         backgroundColor: '#FFFFFF',
+        [theme.breakpoints.up("md")]: {
+            flexBasis: '22%'
+        },
+        [theme.breakpoints.down("md")]: {
+            flexBasis: '100%'
+        }
     },
     title: {
         fontFamily: 'Heebo',
         fontWeight: 'bold',
-        fontSize: '14x',
-        lineHeight: '20px'
+        fontSize: '14px',
+        lineHeight: '20px',
+        marginTop: '10px'
     },
 
     author: {
@@ -57,7 +69,10 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: '12px',
         fontWeight: 'bold',
     },
+    bookInfo: {
 
+       
+    },
     subtitle: {
         color: '#999999',
         fontFamily: 'Heebo',

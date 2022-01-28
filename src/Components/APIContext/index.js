@@ -6,6 +6,7 @@ const APIContext = createContext();
 
 const initialState = {
     listedBooks: [],
+    bookDetails: {},
     maxPages: 0
 }
 
@@ -37,7 +38,7 @@ export const Context = ({ children }) => {
     }
 
     const getListaDeLivros = async (page) => {
-        let amount = 10;
+        let amount = 25;
 
         const response = await axios.get(`${baseUrl}books?page=${page}&amount=${amount}`, {
             headers: {
@@ -57,15 +58,29 @@ export const Context = ({ children }) => {
 
     }
 
+    const getDetalhesLivro = async (id) => {
+
+        const response = await axios.get(`${baseUrl}books/${id}`, {
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": `Bearer ${user.auth}`
+            }
+        })
+        setApiData((prevState) => ({
+            ...prevState,
+            bookDetails: response.data
+        }))
+    }
+
     return (
-        <APIContext.Provider value={{ user, pagination, setPagination, apiData, isSigned, Login, Logout, getListaDeLivros }}>
+        <APIContext.Provider value={{ user, pagination, setPagination, apiData, isSigned, Login, Logout, getListaDeLivros, getDetalhesLivro }}>
             {children}
         </APIContext.Provider>
     )
 }
 
 export const useMyContext = () => {
-    const { user, pagination, setPagination, apiData, isSigned, Login, Logout, getListaDeLivros } = useContext(APIContext);
+    const { user, pagination, setPagination, apiData, isSigned, Login, Logout, getListaDeLivros, getDetalhesLivro } = useContext(APIContext);
 
-    return { user, pagination, setPagination, apiData, isSigned, Login, Logout, getListaDeLivros };
+    return { user, pagination, setPagination, apiData, isSigned, Login, Logout, getListaDeLivros, getDetalhesLivro };
 }

@@ -25,15 +25,15 @@ const CustomPagination = ({ page, setPage }) => {
 
   return (
     <div className={styles.pagination}>
-      <ButtonBase onClick={returnPage}>
-        <img src={Prev} alt="Voltar página" />
-      </ButtonBase>
       {pagination.page && (
         <p>
-          Página {page} de {pagination.totalPages}
+          Página <span>{page}</span> de <span>{pagination.totalPages}</span>
         </p>
       )}
-      <ButtonBase onClick={nextPage}>
+      <ButtonBase className={styles.buttons} onClick={returnPage}>
+        <img src={Prev} alt="Voltar página" />
+      </ButtonBase>
+      <ButtonBase className={styles.buttons} onClick={nextPage}>
         <img src={Next} alt="Avançar página" />
       </ButtonBase>
     </div>

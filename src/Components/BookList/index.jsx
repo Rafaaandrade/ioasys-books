@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMyContext } from "../APIContext";
 import CustomPagination from "../CustomPagination";
+import ModalUI from "../ModalUI";
 import ButtonImage from "./../../assets/LogOut.png";
 import useStyles from "./styles";
 
 const BookList = () => {
-  const { user, Logout, apiData, getListaDeLivros } = useMyContext();
+  const { user, Logout, apiData, getListaDeLivros, getDetalhesLivro} = useMyContext();
   const [page, setPage] = useState(1);
   const styles = useStyles();
   const navigate = useNavigate();
@@ -36,13 +37,14 @@ const BookList = () => {
           </ButtonBase>
         </div>
       </div>
-      <Grid container spacing={2} className={styles.gridContainer}>
+      <Grid container spacing={0} className={styles.gridContainer}>
         {apiData.listedBooks.data &&
           apiData.listedBooks.data.map((book) => (
             <Grid
               item
               xs={12}
-              md={4}
+              sm={5}
+              md={3}
               lg={3}
               key={book.id}
               className={styles.card}
@@ -51,9 +53,10 @@ const BookList = () => {
                 src={book.imageUrl}
                 alt={book.title}
                 className={styles.img}
-              />
-              <div>
-                <Typography variant="h6" className={styles.title}>
+                />
+
+               <ModalUI key={book.id} id={book.id}>
+                <Typography variant="body2" className={styles.title}>
                   {book.title}
                 </Typography>
                 {book.authors.map((author) => (
@@ -65,7 +68,7 @@ const BookList = () => {
                     {author}
                   </Typography>
                 ))}
-                <div>
+                <div className={styles.bookInfo}>
                   <Typography variant="body2" className={styles.subtitle}>
                     {book.pageCount} páginas
                   </Typography>
@@ -76,10 +79,11 @@ const BookList = () => {
                     Publicado em {book.published}
                   </Typography>
                 </div>
-              </div>
+              </ModalUI>
+             
             </Grid>
           ))}
-      </Grid>
+      </Grid>      
       <CustomPagination page={page} setPage={setPage} />
     </div>
   );
