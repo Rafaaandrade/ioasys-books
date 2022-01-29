@@ -72,7 +72,7 @@ const BookList = () => {
                     {author}
                   </Typography>
                 ))}
-                <div className={styles.bookInfo}>
+                <div>
                   <Typography variant="body2" className={styles.subtitle}>
                     {book.pageCount} páginas
                   </Typography>

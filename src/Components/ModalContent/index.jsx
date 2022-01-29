@@ -27,7 +27,7 @@ const ModalContent = ({ content}) => {
                 </Typography>
               ))}
           </div>
-          <Typography variant="h6" className={styles.infoTitle}>INFORMAÇÕES</Typography>
+          <Typography variant="h6" className={styles.infoTitle}>Informações</Typography>
           <div className={styles.informationBox}>
             <div className={styles.informations}>
               <Typography variant="h6">Páginas</Typography>
@@ -49,7 +49,7 @@ const ModalContent = ({ content}) => {
             </div>
           </div>
           <div>
-            <Typography variant="body1" className={styles.resenha}>RESENHA DA EDITORA</Typography>
+            <Typography variant="body1" className={styles.resenha}>Resenha da Editora</Typography>
             <div style={{ flexWrap: "wrap", display: "flex" }}>
               <div>
                 <img src={Quotes} alt="aspas" />

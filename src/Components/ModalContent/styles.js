@@ -42,7 +42,8 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: '14px',
         fontFamily: 'Heebo',
         fontWeight: 'bold',
-        marginTop: '1rem'
+        marginTop: '1rem',
+        textTransform: 'uppercase',
     },
     authors: {
         display: 'inline-flex',
@@ -80,6 +81,7 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: '14px',
         fontFamily: 'Heebo',
         fontWeight: 'bold',
+        textTransform: 'uppercase', 
     },
     description: {
         color: '#999999',

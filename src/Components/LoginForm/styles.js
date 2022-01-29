@@ -69,7 +69,8 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: '16px',
         lineHeight: '20px',
         fontWeight: 'bold',
-        color: '#B22E6F'
+        color: '#B22E6F',
+        textTransform: 'capitalize' 
     },
     error: {
         background: 'rgba(255, 255, 255, 0.4)',
