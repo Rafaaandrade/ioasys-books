@@ -6,13 +6,13 @@ import CustomPagination from "../CustomPagination";
 import ModalUI from "../ModalUI";
 import ButtonImage from "./../../assets/LogOut.png";
 import useStyles from "./styles";
+import notFound from "./../../assets/bookNotFound.jpg";
 
 const BookList = () => {
-  const { user, Logout, apiData, getListaDeLivros, getDetalhesLivro} = useMyContext();
+  const { user, Logout, apiData, getListaDeLivros } = useMyContext();
   const [page, setPage] = useState(1);
   const styles = useStyles();
   const navigate = useNavigate();
-  console.log("apiDAta", apiData);
 
   useEffect(() => {
     getListaDeLivros(page);
@@ -22,6 +22,7 @@ const BookList = () => {
     Logout();
     navigate("/");
   };
+
   return (
     <div className={styles.booksContainer}>
       <div className={styles.header}>
@@ -29,8 +30,12 @@ const BookList = () => {
           <span>ioasys</span> Books
         </p>
         <div className={styles.logout}>
-          {user.data.name && (
-            <Typography variant="body1">Bem vindo, {user.data.name}</Typography>
+          {user.data.name ? (
+            <Typography variant="body1" className={styles.userInfo}>
+              Bem vindo, <span>{user.data.name}</span>
+            </Typography>
+          ) : (
+            <div>Faça login</div>
           )}
           <ButtonBase onClick={handleLogout}>
             <img src={ButtonImage} alt="Logout" />
@@ -50,12 +55,11 @@ const BookList = () => {
               className={styles.card}
             >
               <img
-                src={book.imageUrl}
+                src={book.imageUrl !== null ? book.imageUrl : notFound}
                 alt={book.title}
                 className={styles.img}
-                />
-
-               <ModalUI key={book.id} id={book.id}>
+              />
+              <ModalUI key={book.id} id={book.id}>
                 <Typography variant="body2" className={styles.title}>
                   {book.title}
                 </Typography>
@@ -80,11 +84,10 @@ const BookList = () => {
                   </Typography>
                 </div>
               </ModalUI>
-             
             </Grid>
           ))}
-      </Grid>      
-      <CustomPagination page={page} setPage={setPage} />
+        <CustomPagination page={page} setPage={setPage} />
+      </Grid>
     </div>
   );
 };

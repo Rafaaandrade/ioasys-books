@@ -1,17 +1,33 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
     pagination: {
-        width: '80%',
+        width: '90%',
         display: 'flex',
         justifyContent: 'flex-end',
         marginTop: '10',
-
-        "& span" : {
+        fontFamily: 'Heebo',
+        "& span": {
             fontWeight: 'bold',
-        }
+        },
+        [theme.breakpoints.down("sm")]: {
+            justifyContent: 'center',
+        },
     },
-    buttons: {
+    buttonReturn: {
+        marginLeft: '1rem',
+        [theme.breakpoints.down("sm")]: {
+            display: 'none'
+        },
+    },
+    buttonNext: {
         marginLeft: '1rem'
+    },
+    buttonsMobile: {
+        marginRight: '1rem',
+        [theme.breakpoints.up("sm")]: {
+            display: 'none'
+        },
     }
+
 }));

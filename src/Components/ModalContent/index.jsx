@@ -1,17 +1,17 @@
 import { Typography } from "@material-ui/core";
-import React, { useEffect } from "react";
-import useStyles from "./styles";
+import React from "react";
+import notFound from "./../../assets/bookNotFound.jpg";
 import Quotes from "./../../assets/Quotes.png";
+import useStyles from "./styles";
 
-const ModalContent = ({ content, getDetalhesLivro, id }) => {
+const ModalContent = ({ content}) => {
   const styles = useStyles();
-  console.log("ModalContent", content);
 
   return (
     <div className={styles.paper}>
       <div className={styles.content}>
         <img
-          src={content.imageUrl}
+         src={content.imageUrl !== null ? content.imageUrl : notFound}
           alt={content.title}
           className={styles.img}
         />
@@ -27,8 +27,7 @@ const ModalContent = ({ content, getDetalhesLivro, id }) => {
                 </Typography>
               ))}
           </div>
-          {/* Divisao */}
-          <Typography variant="h6">INFORMAÇÕES</Typography>
+          <Typography variant="h6" className={styles.infoTitle}>INFORMAÇÕES</Typography>
           <div className={styles.informationBox}>
             <div className={styles.informations}>
               <Typography variant="h6">Páginas</Typography>
@@ -49,10 +48,8 @@ const ModalContent = ({ content, getDetalhesLivro, id }) => {
               <Typography variant="h6">{content.isbn13}</Typography>
             </div>
           </div>
-
-          {/* Divisao */}
           <div>
-            <Typography variant="body1">RESENHA DA EDITORA</Typography>
+            <Typography variant="body1" className={styles.resenha}>RESENHA DA EDITORA</Typography>
             <div style={{ flexWrap: "wrap", display: "flex" }}>
               <div>
                 <img src={Quotes} alt="aspas" />

@@ -1,9 +1,9 @@
 import { ButtonBase } from "@material-ui/core";
 import React from "react";
-import { useStyles } from "./styles";
+import { useMyContext } from "../APIContext";
 import Next from "./../../assets/Next.png";
 import Prev from "./../../assets/Prev.png";
-import { useMyContext } from "../APIContext";
+import { useStyles } from "./styles";
 
 const CustomPagination = ({ page, setPage }) => {
   const styles = useStyles();
@@ -25,15 +25,18 @@ const CustomPagination = ({ page, setPage }) => {
 
   return (
     <div className={styles.pagination}>
+      <ButtonBase className={styles.buttonsMobile} onClick={returnPage}>
+        <img src={Prev} alt="Voltar página" />
+      </ButtonBase>
       {pagination.page && (
         <p>
           Página <span>{page}</span> de <span>{pagination.totalPages}</span>
         </p>
       )}
-      <ButtonBase className={styles.buttons} onClick={returnPage}>
+      <ButtonBase className={styles.buttonReturn} onClick={returnPage}>
         <img src={Prev} alt="Voltar página" />
       </ButtonBase>
-      <ButtonBase className={styles.buttons} onClick={nextPage}>
+      <ButtonBase className={styles.buttonNext} onClick={nextPage}>
         <img src={Next} alt="Avançar página" />
       </ButtonBase>
     </div>

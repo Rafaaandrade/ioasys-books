@@ -1,37 +1,46 @@
 import { makeStyles } from "@material-ui/core";
-import background from "./../../assets/backgroundImage2.png";
 
 export const useStyles = makeStyles((theme) => ({
-
     booksContainer: {
         display: 'flex',
         flexWrap: 'wrap',
-        backgroundImage: `url(${background})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
         width: '100%',
         margin: '0 auto'
     },
     header: {
         fontFamily: 'Heebo',
-        color: '##333333',
+        color: '#333333',
         fontSize: '28px',
         fontWeight: '300',
         display: 'flex',
         justifyContent: 'space-between',
-        width: '100%',
+        width: '90%',
         minHeight: '100px',
-        margin:' 0 auto',
 
         "& span": {
             fontWeight: 'bold',
-            marginLeft: '2rem'
+            fontSize: '36px',
+            color: '#333333',
+            marginRight: '.8rem'
         }
     },
     logout: {
         display: 'flex',
         alignSelf: 'center',
         gap: '12px',
+
+    },
+    userInfo: {
+        fontFamily: 'Heebo',
+        fontSize: '1rem',
+        "& span": {
+            fontWeight: 'bold',
+            fontSize: '1rem',
+        },
+
+        [theme.breakpoints.down("sm")]: {
+            display: 'none'
+        }
     },
     gridContainer: {
         gap: '1rem  ',
@@ -39,10 +48,11 @@ export const useStyles = makeStyles((theme) => ({
         width: '100%'
     },
     img: {
-        width: '25%', 
+        width: '25%',
         objectFit: 'contain',
         marginLeft: '1rem',
         marginRight: '1rem',
+
     },
     card: {
         display: 'inline-flex',
@@ -68,10 +78,6 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         fontSize: '12px',
         fontWeight: 'bold',
-    },
-    bookInfo: {
-
-       
     },
     subtitle: {
         color: '#999999',

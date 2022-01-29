@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
 
         [theme.breakpoints.down('xs')]: {
             backgroundRepeat: "no-repeat",
-            backgroundSize: "600px 100%"
+            backgroundSize: "700px 100%",
         }
     },
   

@@ -1,6 +1,5 @@
 import React from "react";
-import BookList from "../BookList";
-import LoginForm from "../LoginForm";
+import LoginForm from "../../Components/LoginForm";
 import useStyles from "./styles";
 
 const Home = () => {

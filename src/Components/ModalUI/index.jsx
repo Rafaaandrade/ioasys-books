@@ -1,5 +1,5 @@
 import { Backdrop, Fade, Modal } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useMyContext } from "../APIContext";
 import ModalContent from "../ModalContent";
 import useStyles from "./styles";
@@ -9,7 +9,6 @@ const ModalUI = ({ children, id }) => {
   const { getDetalhesLivro, apiData } = useMyContext();
   const styles = useStyles();
 
-  console.log("MODAL UI API DATA", apiData);
   const handleOpen = () => {
     setOpen(true);
     getDetalhesLivro(id)

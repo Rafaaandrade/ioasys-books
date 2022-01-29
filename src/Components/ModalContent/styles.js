@@ -1,34 +1,48 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
     paper: {
-        width: '55%',
+        width: '57%',
         height: '80vh',
         backgroundColor: '#FFFFFF',
         margin: '0 auto',
         padding: '2rem',
         marginTop: '2rem',
         overflowY: "scroll",
-        scrollbarsWidth: "none",    
+        scrollbarsWidth: "none",
         "&::-webkit-scrollbar": {
-          display: "none",
+            display: "none",
         },
     },
     content: {
         display: "flex",
         gap: '2rem',
-     
 
+        [theme.breakpoints.down("sm")]: {
+            display: "flex",
+            flexDirection: "column",
+        }
     },
     img: {
-        width: '50%'
+        width: '50%',
+
+        [theme.breakpoints.down("sm")]: {
+            width: '100%'
+        }
+
     },
     title: {
         fontFamily: 'Heebo',
         fontWeight: 'bold',
         fontSize: '2rem',
         lineHeight: '40px',
-        
+
+    },
+    infoTitle: {
+        fontSize: '14px',
+        fontFamily: 'Heebo',
+        fontWeight: 'bold',
+        marginTop: '1rem'
     },
     authors: {
         display: 'inline-flex',
@@ -44,25 +58,31 @@ export const useStyles = makeStyles(() => ({
     },
     informations: {
         width: '40%',
-      textAlign: 'left',
-      "& > *": {
-        fontSize: '1rem',
-        fontFamily: 'Heebo',
-        fontWeight: 'bold',
-      }
+        textAlign: 'left',
+        "& > *": {
+            lineHeight: '30px',
+            fontSize: '1rem',
+            fontFamily: 'Heebo',
+            fontWeight: 'bold',
+        }
     },
     informationsValues: {
         width: '60%',
         textAlign: 'right',
         "& > *": {
+            lineHeight: '30px',
             fontSize: '.99rem',
             fontFamily: 'Heebo',
             whiteSpace: 'nowrap',
-          }
+        }
+    },
+    resenha: {
+        fontSize: '14px',
+        fontFamily: 'Heebo',
+        fontWeight: 'bold',
     },
     description: {
         color: '#999999',
-        
     }
 
 }));

@@ -1,5 +1,6 @@
-import BookList from "../../Components/BookList";
-import Home from "../../Components/Home";
+import Home from "../../Pages/Home";
+import Listagem from "../../Pages/Listagem";
+
 
 const routes = [
     {
@@ -10,7 +11,7 @@ const routes = [
     {
         path: '/books',
         exact: true,
-        component: BookList
+        component: Listagem
     }
 
 ];

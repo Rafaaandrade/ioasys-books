@@ -1,12 +1,12 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useMyContext } from "../APIContext";
 import useStyles from "./styles";
-import { Controller, useForm } from "react-hook-form";
 
 const LoginForm = () => {
-  const { user, isSigned, apiData, Login } = useMyContext();
+  const { user, isSigned, error, Login } = useMyContext();
   const navigate = useNavigate();
   const styles = useStyles();
   const { control, handleSubmit } = useForm({
@@ -31,35 +31,53 @@ const LoginForm = () => {
   return (
     <div>
       <div className={styles.loginForm}>
-        <div className={styles.header}>ioasys Books</div>
+        <div className={styles.header}>
+          <span>ioasys</span> Books
+        </div>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.formContent}>
           <div className={styles.firstInput}>
             <Controller
               control={control}
               name="email"
               render={({ field }) => (
-                <TextField {...field} type="email" label="Email" fullWidth />
+                <TextField
+                  {...field}
+                  type="email"
+                  label="Email"
+                  inputProps={{ className: styles.textfieldInput }}
+                  InputLabelProps={{
+                    className: styles.textfieldLabel,
+                  }}
+                  fullWidth
+                />
               )}
             />
           </div>
-
           <div className={styles.groupButton}>
             <Controller
               control={control}
               name="password"
               render={({ field }) => (
-                <TextField {...field} type="password" label="Senha" fullWidth />
+                <TextField
+                  {...field}
+                  type="password"
+                  label="Senha"
+                  inputProps={{ className: styles.textfieldInput }}
+                  InputLabelProps={{
+                    className: styles.textfieldLabel,
+                  }}
+                  fullWidth
+                />
               )}
             />
-            <Button
-              className={styles.btn}
-              label="Entrar"
-              type="submit"
-            >
+            <Button className={styles.btn} type="submit">
               Entrar
             </Button>
           </div>
         </form>
+        {error && (
+          <div className={styles.error}>Email e/ou senha incorretos.</div>
+        )}
       </div>
     </div>
   );
